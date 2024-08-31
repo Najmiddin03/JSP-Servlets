@@ -10,19 +10,12 @@
 <body>
 	<%
 	String username = null, sessionId = null;
-	Cookie[] cookies = request.getCookies();
-	if (cookies != null) {
-		for (Cookie c : cookies) {
-			if (c.getName().equals("username")) {
-		username = c.getValue();
-			}
-			if (c.getName().equals("JSESSIONID")) {
-		sessionId = c.getValue();
-			}
-		}
-	}
-	if (sessionId == null || username == null) {
+	if (request.getSession().getAttribute("username") == null) {
 		response.sendRedirect("login.jsp");
+
+	} else {
+		username = request.getSession().getAttribute("username").toString();
+		sessionId = request.getSession().getId();
 	}
 	%>
 	Username:
