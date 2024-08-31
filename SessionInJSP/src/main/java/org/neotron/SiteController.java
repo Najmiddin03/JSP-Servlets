@@ -8,26 +8,44 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class SiteController
- */
 @WebServlet("/SiteController")
 public class SiteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Default constructor.
-	 */
 	public SiteController() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = request.getParameter("action");
+		switch (action) {
+		case "login": {
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+			break;
+		}
+		default:
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+			break;
+		}
+	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String action = request.getParameter("action");
+		switch (action) {
+		case "auth": {
+			auth(request, response);
+			break;
+		}
+		default:
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+			break;
+		}
+
+	}
+
+	protected void auth(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		if (username.equals("Nedji") && password.equals("5656")) {
@@ -35,9 +53,9 @@ public class SiteController extends HttpServlet {
 			HttpSession newSession = request.getSession();
 			newSession.setMaxInactiveInterval(500);
 			newSession.setAttribute("username", username);
-			response.sendRedirect("member.jsp");
+			response.sendRedirect(request.getContextPath() + "/MemberAreaController?action=memberArea");
 		} else {
-			response.sendRedirect("login.jsp");
+			response.sendRedirect(request.getContextPath() + "/SiteController?action=login");
 		}
 	}
 

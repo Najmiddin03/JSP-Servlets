@@ -24,7 +24,12 @@ public class MemberAreaController extends HttpServlet {
 		switch (action) {
 		case "destroy": {
 			request.getSession().invalidate();
-			response.sendRedirect("login.jsp");
+			response.sendRedirect(request.getContextPath() + "/SiteController?action=login");
+			break;
+		}
+		case "memberArea": {
+			request.getRequestDispatcher("member.jsp").forward(request, response);
+			break;
 		}
 		}
 	}
