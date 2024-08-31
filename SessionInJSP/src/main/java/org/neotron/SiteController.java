@@ -3,6 +3,7 @@ package org.neotron;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -34,6 +35,8 @@ public class SiteController extends HttpServlet {
 			request.getSession().invalidate();
 			HttpSession newSession = request.getSession();
 			newSession.setMaxInactiveInterval(500);
+			Cookie cookie =new Cookie("username", username);
+			response.addCookie(cookie);
 			response.sendRedirect("member.jsp");
 		} else {
 			response.sendRedirect("login.jsp");
