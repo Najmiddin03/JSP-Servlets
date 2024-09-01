@@ -134,7 +134,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="JSP_Forms" path="/JSP_Forms" reloadable="true" source="org.eclipse.jst.j2ee.server:JSP_Forms"/><Context docBase="Hello_Servlets" path="/Hello_Servlets" reloadable="true" source="org.eclipse.jst.jee.server:Hello_Servlets"/><Context docBase="Imoprt_class_into_JSP" path="/Imoprt_class_into_JSP" reloadable="true" source="org.eclipse.jst.j2ee.server:Imoprt_class_into_JSP"/><Context docBase="JavaBeansOverview" path="/JavaBeansOverview" reloadable="true" source="org.eclipse.jst.j2ee.server:JavaBeansOverview"/><Context docBase="SampleProject" path="/SampleProject" reloadable="true" source="org.eclipse.jst.j2ee.server:SampleProject"/><Context docBase="ServletAnnotations" path="/ServletAnnotations" reloadable="true" source="org.eclipse.jst.jee.server:ServletAnnotations"/><Context docBase="SessionInJSP" path="/SessionInJSP" reloadable="true" source="org.eclipse.jst.jee.server:SessionInJSP"/></Host>
+      <Context docBase="DatabaseConnection" path="/DatabaseConnection" reloadable="true" source="org.eclipse.jst.jee.server:DatabaseConnection"/></Host>
     </Engine>
   </Service>
 </Server>

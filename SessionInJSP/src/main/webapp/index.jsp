@@ -1,13 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Home</title>
-</head>
-<body>
-	<a href="<%=request.getContextPath()%>/SiteController?action=login">Login</a>
-
-</body>
-</html>
+<jsp:include page="include/header.jsp">
+	<jsp:param value="Homepage" name="titlePage" />
+</jsp:include>
+<a href="<%=request.getContextPath()%>/SiteController?action=login"><h1>Login</h1>
+</a>
+<jsp:include page="include/footer.jsp" />
